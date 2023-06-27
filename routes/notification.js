@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
         doNumber: '669480',
         mawbNo: '900-12345666',
         hawbNo: 'SG100844711',
-        pathUrl: '/Delivery'
+        pathUrl: '/Delivery',
+        seen: false
       },
       {
         id: 2,
@@ -23,7 +24,8 @@ router.get('/', (req, res) => {
         doNumber: '669480',
         mawbNo: '900-12345678',
         hawbNo: 'SG1008447122',
-        pathUrl: '/Delivery'
+        pathUrl: '/Delivery',
+        seen: false
       },
       {
         id: 3,
@@ -31,7 +33,8 @@ router.get('/', (req, res) => {
         doNumber: '669480',
         mawbNo: '900-12345633',
         hawbNo: 'SG100844714',
-        pathUrl: '/Delivery'
+        pathUrl: '/Delivery',
+        seen: true
       },
       {
         id: 4,
@@ -39,7 +42,8 @@ router.get('/', (req, res) => {
         doNumber: '669480',
         mawbNo: '900-12345655',
         hawbNo: 'SG1008447165',
-        pathUrl: '/Delivery'
+        pathUrl: '/Delivery',
+        seen: true
       },
       {
         id: 5,
@@ -47,7 +51,8 @@ router.get('/', (req, res) => {
         doNumber: '669480',
         mawbNo: '900-12345622',
         hawbNo: 'SG1008447143',
-        pathUrl: '/Delivery'
+        pathUrl: '/Delivery',
+        seen: true
       }
     ]
   })
