@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
+var cors = require('cors')
 const port = process.env.PORT || 3001;
 
+app.use(cors())
 app.get("/", (req, res) => res.type('html').send(html));
 app.use('/notification', require('./routes/notification'))
 
