@@ -2,12 +2,26 @@ const express = require("express");
 const app = express();
 var cors = require('cors')
 const port = process.env.PORT || 3001;
+const http = require('http')
+const socketIO = require('socket.io')
+const server = http.Server(app)
+const bodyParser = require('body-parser')
+server.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const io = socketIO(server, { cors: { origin: "*" } });
+exports.io = io
 
 app.use(cors())
-app.get("/", (req, res) => res.type('html').send(html));
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+
 app.use('/notification', require('./routes/notification'))
 
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+io.on('connection', function (socket) {
+  socket.on('seen-notification', function (request) {
+    console.log('message==>', request)
+  });
+});
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;

@@ -1,4 +1,5 @@
 const express = require('express')
+const { io } = require("../app")
 const router = express.Router()
 
 router.use((req, res, next) => {
@@ -56,6 +57,19 @@ router.get('/', (req, res) => {
       }
     ]
   })
+})
+
+router.post('/', (req, res) => {
+  try {
+    const { id, title, doNumber, prefix, awb, hawbNo, pathUrl } = req.body
+    io.emit('notification', { id, title, doNumber, mawbNo: `${prefix}-${awb}`, hawbNo, pathUrl });
+    res.status(200).json({
+      success: true
+    })
+  } catch (error) {
+    console.error(error)
+    throw error.message
+  }
 })
 
 module.exports = router
